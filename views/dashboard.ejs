@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+    }
+
+    .navbar {
+      background: #2c3e50;
+      padding: 15px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-left: 15px;
+      font-size: 14px;
+    }
+
+    .container {
+      padding: 30px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      margin: 0;
+      color: #333;
+    }
+
+    .card p {
+      font-size: 28px;
+      margin-top: 10px;
+      color: #3498db;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 15px;
+      color: #777;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <h2>User Dashboard</h2>
+    <div>
+      <a href="/user">Users</a>
+      <a href="/logout">Logout</a>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="container">
+    <h2>Welcome 👋</h2>
+    <p>Here is a quick overview of your application.</p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Total Users</h3>
+        <p><%= totalUsers %></p>
+      </div>
+
+      <div class="card">
+        <h3>Active Status</h3>
+        <p>✔</p>
+      </div>
+
+      <div class="card">
+        <h3>Security</h3>
+        <p>🔐</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2026 User Management System
+  </div>
+
+</body>
+</html>

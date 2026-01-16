@@ -14,8 +14,6 @@ const { fork } = require('child_process');
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
-
-
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -34,13 +32,11 @@ app.get("/",(req,res)=>{
   }
   let count=result[0]["count(*)"];
   res.render("home.ejs",{count});
-
-
-  
+    
 });
 });
 
-app.get("/user",(req,res)=>{
+  app.get("/user",(req,res)=>{
   let q=`SELECT* FROM user`;
   connection.query(q,(err,users)=>{
   if(err) {
@@ -49,15 +45,12 @@ app.get("/user",(req,res)=>{
    return;
   }
    console.log(users);
-  // res.send(result);
-  res.render("showusers.ejs",{users});
 
-  
+  res.render("showusers.ejs",{users}); 
 });
-    
-});
+    });
 
-app.get("/user/:id/edit",(req,res)=>{
+  app.get("/user/:id/edit",(req,res)=>{
   let {id}=req.params;
   let q=`SELECT* FROM user WHERE id='${id}'`;
   
@@ -69,11 +62,8 @@ app.get("/user/:id/edit",(req,res)=>{
   }
   let user=result[0];
  
-  res.render("edit.ejs",{user});
-
-  
-});
-  
+  res.render("edit.ejs",{user});   
+   });
 });
 app.patch("/user/:id",(req,res)=>{
  
@@ -102,17 +92,9 @@ connection.query(q2,(err,result)=>{
   res.redirect("/user");
   
 });
-
-  }
- 
-
-
-  
-});
-  
-
+      }
+   });
 })
-
 
 app.get("/user/new", (req, res) => {
   res.render("new.ejs");
@@ -209,57 +191,7 @@ app.get("/user/search", (req, res) => {
   });
 });
 
-
-
 app.listen("8080",()=>{
   console.log("app is listening on the port 8080");
   
 });
-// inserting new users
-
-// let q="INSERT INTO user (id,username,email,password) VALUES ?";
-// let data=[];
-// for(let i=0;i<=100;i++){
-//   data.push(getRandomUser());
-  
-// }
-
-
-
-// connection.query(q,[data],(err,result)=>{
-//   if(err) {
-//    console.error(err);
-//    return;
-//   }
-//   console.log(result);
-  
-// });
-// connection.end();
-
-
-
-
-
-
-
-
-
-
-// let getRandomUser =()=> {
-//   return [
-//      faker.string.uuid(),
-//      faker.internet.username(),
-//      faker.internet.email(),
-    
-//    faker.internet.password()
-   
-   
-//   ];
-// };
-
-  
-
-
-
-
-
